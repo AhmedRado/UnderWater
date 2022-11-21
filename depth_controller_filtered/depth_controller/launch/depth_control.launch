@@ -1,0 +1,13 @@
+<launch>
+    <arg name="vehicle_name" default="bluerov" />
+    <!-- <include file="$(find fav_sim)/launch/simulation.launch" pass_all_args="true" /> -->
+    <group ns="$(arg vehicle_name)">
+        <node name="depth_setpoint_publisher" pkg="depth_controller" type="depth_setpoint.py" output="screen" />
+        <node name="depth_controller" pkg="depth_controller" type="depth_control.py" output="screen" />
+        <node name="depth_estimator" pkg="depth_controller" type="depth_estimator.py" output="screen" />
+
+
+        <!-- Add your own nodes here -->
+    </group>
+    <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
+</launch>
