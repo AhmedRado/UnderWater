@@ -17,11 +17,10 @@ def pressure_callback(pressure_msg, publisher):
 def main():
     rospy.init_node("depth_estimator")
     depth_pub = rospy.Publisher("deep", Float32, queue_size=1)
-    pressure_sub = rospy.Subscriber("pressure", FluidPressure,
-                                     pressure_callback, depth_pub)
+    
 
     
-    r = rospy.Rate(50)
+    r = rospy.Rate(50.0)
 
     while not rospy.is_shutdown():
         r.sleep() 

@@ -1,0 +1,17 @@
+<launch>
+    <arg name="vehicle_name" default="bluerov" />
+    <include file="$(find fav_sim)/launch/gazebo_assignment2.launch" pass_all_args="true" /> 
+    <include file="$(find fav_sim)/launch/spawn_vehicle.launch" pass_all_args="true" /> 
+    
+    <group ns="$(arg vehicle_name)">
+        <node name="depth_setpoint_publisher" pkg="depth_controller" type="depth_setpoint.py" output="screen" />
+        <node name="depth_estimator" pkg="depth_controller" type="depth_estimator.py" output="screen" />
+        <node name="depth_control" pkg="depth_controller" type="depth_control.py" output="screen" />
+        <!-- <node name="robot_localization" pkg="depth_controller" type="robot_localization.py" output="screen" /> -->
+        <!-- <node name="robot_localization_simple" pkg="depth_controller" type="robot_localization_simple.py" output="screen" /> -->
+        <!-- <node name="robot_localization_simple_p" pkg="depth_controller" type="robot_localization_simple_p.py" output="screen" /> -->
+        <!-- <node name="robot_localization_velocity" pkg="depth_controller" type="robot_localization_velocity.py" output="screen" /> -->
+        <node name="last_localization" pkg="depth_controller" type="last_localization.py" output="screen" />
+    </group>
+    <node name="rqt_graph" pkg="rqt_graph" type="rqt_graph" />
+</launch>

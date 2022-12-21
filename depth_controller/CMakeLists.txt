@@ -57,5 +57,11 @@ catkin_install_python(PROGRAMS
   nodes/depth_setpoint.py
   nodes/depth_estimator.py
   nodes/depth_control.py
+  nodes/localization.py
+  nodes/robot_localization.py
+  nodes/robot_localization_simple.py
+  nodes/robot_localization_simple_p.py
+  nodes/robot_localization_velocity.py
+  nodes/last_localization.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
